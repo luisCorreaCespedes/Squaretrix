@@ -1,1 +1,1 @@
-# Suaretrix Game
+# Squaretrix Game
