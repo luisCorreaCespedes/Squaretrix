@@ -74,3 +74,74 @@ button {
     justify-content: space-between;
 }
 
+.info-section {
+    position: relative;
+    text-align: center;
+    font-weight: 600;
+    padding: 20px;
+    font-size: 25px;
+    color: var(--color);
+}
+
+.info-section #level {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 30px;
+    font-size: 18px;
+}
+
+.board-section{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    margin: auto;
+    padding: 10px;
+    box-shadow: var(--board-shadow-inset);
+    border-radius: 10px;
+}
+
+.block {
+    width: var(--block-size);
+    height: var(--block-size);
+    border: 0.1px solid var(--bg-color);
+}
+
+.setting-section {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.setting-section button {
+    margin: 0 10px;
+    color: var(--setting-btn-color)
+}
+
+i.bxs-moon {
+    display: block;
+}
+
+i.bxs-sun {
+    display: none;
+}
+
+.btn {
+    width: var(--button-size);
+    height: var(--button-size);
+    box-shadow: var(--btn-shadow);
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 30px;
+    color: var(--color);
+    border: none;
+    outline: none;
+    background-color: var(--bg-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn:active {
+    box-shadow: var(--btn-shadow-inset);
+}
