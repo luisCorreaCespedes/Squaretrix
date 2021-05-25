@@ -22,8 +22,8 @@
     --bg-color: #243441;
     --color: #0affef;
     --setting-btn-color: #f88ab0;
-    --wrapper-shadow: -10px 10px 20px #1f2d39,
-    10px -10px 20px #293b49;
+    --wrapper-shadow: -10px 10px 10px #1f2d39,
+    10px -10px 10px #293b49;
     --btn-shadow: -5px 5px 10px #1f2d39,
     5px -5px 10px #293b49;
     --btn-shadow-inset: inset -5px 5px 10px #1f2d39,
@@ -254,6 +254,20 @@ i.bxs-sun {
     transform: scale(0);
 }
 
+.play .board-section,
+.play .info-section,
+.play .control-section {
+    transform: scale(1);
+}
+
+.play .menu-section {
+    transform: scale(0);
+}
+
+.play #btn-pause {
+    display: flex;
+}
+
 #btn-new-game,
 #btn-pause {
     display: none;
@@ -277,6 +291,11 @@ i.bxs-sun {
     }
 
     .setting-section {
+        padding: unset;
+        margin-top: -40px;
+    }
+
+    .play .setting-section {
         position: absolute;
         flex-direction: column;
         bottom: unset;
