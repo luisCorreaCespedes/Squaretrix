@@ -315,3 +315,44 @@ i.bxs-sun {
         display: none;
     }
 }
+
+@media only screen and (max-width: 360px) {
+    :root {
+        --block-size: 18px;
+    }
+
+    .game-wrapper {
+        box-shadow: unset;
+        border-radius: unset;
+        padding-bottom: 10px;
+    }
+
+    .control-section {
+        display: flex;
+    }
+
+    .setting-section {
+        padding: unset;
+        margin-top: -80px;
+    }
+
+    .play .setting-section {
+        position: absolute;
+        flex-direction: column;
+        bottom: unset;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 2px;
+        padding: unset;
+    }
+
+    .setting-section button {
+        margin-bottom: 15px;
+
+    }
+
+    .how-to,
+    #btn-help {
+        display: none;
+    }
+}
