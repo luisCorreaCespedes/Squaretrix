@@ -176,6 +176,91 @@ i.bxs-sun {
     font-size: 30px;
 }
 
+.menu-section {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.menu-section button {
+    margin-bottom: 30px;
+    
+}
+
+.btn-width {
+    width: 200px;
+    
+}
+
+.brand {
+    padding: 40px 0;
+    font-size: 25px;
+    color: var(--color);
+    text-align: center;
+}
+
+.result {
+    text-align: center;
+    margin-bottom: 90px;
+    display: none;
+}
+
+.result p {
+    color: var(--setting-btn-color);
+}
+
+.result h1 {
+    color: var(--color);
+    margin-bottom: 30px;
+}
+
+.how-to {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(100%, -50%);
+    box-shadow: var(--wrapper-shadow);
+    padding: 30px;
+    border-radius: 20px;
+    background-color: var(--bg-color);
+    color: var(--color);
+    transition: transform .5s ease-in-out;
+}
+
+.how-to.active {
+    transform: translate(0, -50%)
+}
+
+.how-to h3 {
+    margin-bottom: 40px;
+}
+
+.how-to td {
+    padding: 20px;
+}
+
+.keycap {
+    width: calc(var(--button-size) * 2);
+    color: var(--setting-btn-color);
+    font-size: 20px;
+}
+
+/* States */
+
+.board-section,
+.info-section,
+.control-section {
+    transform: scale(0);
+}
+
+#btn-new-game,
+#btn-pause {
+    display: none;
+}
+
+/* END States */
+
 @media only screen and (max-width: 425px) {
     :root {
         --block-size: 18px;
@@ -204,5 +289,10 @@ i.bxs-sun {
     .setting-section button {
         margin-bottom: 15px;
 
+    }
+
+    .how-to,
+    #btn-help {
+        display: none;
     }
 }

@@ -16,16 +16,17 @@
 </head>
 <body>
     
+    <!--Main Game-->
     <div class="container">
         <div class="game-wrapper">
 
             <!--Information section-->
             <div class="info-section">
                 <span id="score">
-                    Score: ???
+                    Puntuación: ???
                 </span>
                 <span id="level">
-                    a
+                    nv. 1
                 </span>
             </div>
             <!--END Information section-->
@@ -81,13 +82,105 @@
             <!--END Settings section-->
 
             <!--Menu section-->
-
+            <div class="menu-section">
+                <div class="brand">
+                    <h3>
+                        Squaretrix
+                    </h3>
+                    <span>un nuevo tetris</span>
+                </div>
+                <div class="result">
+                    <h1>FIN DEL JUEGO</h1>
+                    <p>Nivel</p>
+                    <h1 id="result-level">1</h1>
+                    <p>Puntuación</p>
+                    <h1 id="result-score">123456</h1>
+                </div>
+                <button class="btn btn-width" id="btn-play">
+                    Jugar
+                </button>
+                <button class="btn btn-width" id="btn-new-game">
+                    Nuevo juego
+                </button>
+            </div>
             <!--END Menu section-->
 
         </div>
     </div>
+    <!--END Main Game-->
+
+    <!--Help section-->
+    <div class="how-to">
+        <h3>
+            CONTROLES DE TECLADO
+        </h3>
+        <table>
+            <tr>
+                <td>
+                    <button class="btn keycap">
+                        <i class="bx bxs-chevron-left"></i>
+                    </button>
+                </td>
+                <td>
+                    Mover izquierda
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn keycap">
+                        <i class="bx bxs-chevron-right"></i>
+                    </button>
+                </td>
+                <td>
+                    Mover derecha
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn keycap">
+                        <i class="bx bxs-chevron-down"></i>
+                    </button>
+                </td>
+                <td>
+                    Mover abajo
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn keycap">
+                        <i class="bx bxs-chevron-up"></i>
+                    </button>
+                </td>
+                <td>
+                    Rotar pieza
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn keycap">
+                        Espacio
+                    </button>
+                </td>
+                <td>
+                    Caída rápida
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn keycap">
+                        P
+                    </button>
+                </td>
+                <td>
+                    Pausar/Continuar
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!--END Help section-->
 
     <script src="./js/app.js"></script>
+    <script src="./js/game.js"></script>
 
 </body>
 </html>
