@@ -170,6 +170,12 @@ i.bxs-sun {
     grid-template-columns: repeat(3,1fr);
 }
 
+.btn-large {
+    width: 80px !important;
+    height: 80px !important;
+    font-size: 30px;
+}
+
 @media only screen and (max-width: 425px) {
     :root {
         --block-size: 18px;
@@ -178,6 +184,7 @@ i.bxs-sun {
     .game-wrapper {
         box-shadow: unset;
         border-radius: unset;
+        padding-bottom: 10px;
     }
 
     .control-section {
