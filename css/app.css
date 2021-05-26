@@ -189,7 +189,7 @@ i.bxs-sun {
 }
 
 .btn-width {
-    width: 200px;
+    width: 220px;
     
 }
 
@@ -246,6 +246,15 @@ i.bxs-sun {
     font-size: 20px;
 }
 
+/* Images fall effect */
+
+.container img.fall {
+    position: absolute;
+    animation: fall linear infinite;
+}
+
+/* END Images fall effect */
+
 /* States */
 
 .board-section,
@@ -268,12 +277,46 @@ i.bxs-sun {
     display: flex;
 }
 
+.pause #btn-new-game,
+.end #btn-new-game {
+    display: block;
+}
+
+.end .result {
+    display: block;
+}
+
+.end #btn-play {
+    display: none;
+}
+
 #btn-new-game,
 #btn-pause {
     display: none;
 }
 
 /* END States */
+
+/* Animation */
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(2000%) rotate(90deg);
+        opacity: 1;
+    }
+}
+
+/* END Animation */
 
 @media only screen and (max-width: 425px) {
     :root {
