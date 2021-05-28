@@ -39,7 +39,7 @@ newTetromino = (blocks, colors, start_x, start_y) => {
     let index = Math.floor(Math.random() * blocks.length);
     return {
         block: JSON.parse(JSON.stringify(blocks[index])),
-        color: "url('/assets/animated/"+COLORS[index]+"')",
+        color: COLORS[index],
         x: start_x,
         y: start_y
     }
@@ -52,7 +52,7 @@ drawTetromino = (tetromino, grid) => {
             let x = tetromino.x + i;
             let y = tetromino.y + j;
             if (value > 0) {
-                field[grid.board[x][y].index].style.backgroundImage = tetromino.color;
+                field[grid.board[x][y].index].style.background = tetromino.color;
             }
         })
     })
@@ -137,7 +137,7 @@ moveRight = (tetromino, grid) => {
     drawTetromino(tetromino, grid);
 };
 
-//Check rotate
+//Check rotatable
 rotatable = (tetromino, grid) => {
     let cloneBlock = JSON.parse(JSON.stringify(tetromino.block));
     for (let y = 0; y < cloneBlock.length; y++) {
@@ -168,6 +168,15 @@ rotate = (tetromino, grid) => {
     drawTetromino(tetromino, grid);
 };
 
+// Hard drop tetromino
+hardDrop = (tetromino, grid) => {
+    clearTetromino(tetromino, grid);
+    while (movable(tetromino, grid, DIRECTION.DOWN)) {
+        tetromino.x++;
+    }
+    drawTetromino(tetromino, grid);
+}
+
 
 // DEMO
 let grid = newGrid(GRID_WIDTH, GRID_HEIGHT);
@@ -194,6 +203,9 @@ document.addEventListener('keydown', e => {
         case KEY.UP:
             rotate(tetromino, grid);
             break;
+        case KEY.SPACE:
+            hardDrop(tetromino, grid);
+            break;
     }
 })
 
@@ -206,6 +218,9 @@ btns.forEach(e => {
     let body = document.querySelector('body');
     e.addEventListener('click', () => {
         switch(btn_id) {
+            case 'btn-drop':
+                hardDrop(tetromino, grid);
+                break;
             case 'btn-up':
                 rotate(tetromino, grid);
                 break;

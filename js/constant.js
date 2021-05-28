@@ -45,16 +45,16 @@ const pointBlock = [
 
 const BLOCKS = [iBlock, oBlock, tBlock, sBlock, zBlock, lBlock, jBlock, uBlock, pointBlock];
 const COLORS = [
-    'red_block.png',
-    'green_block.png',
-    'blue_block.png',
-    'orange_block.png',
-    'lightblue_block.png',
-    'yellow_block.png',
-    'pink_block.png',
-    'brown_color.png',
-    'black_color.png'
-]
+    '#c23616',
+    '#0097e6',
+    '#44bd32',
+    '#e1b12c',
+    '#8c7ae6',
+    '#e84393',
+    '#00cec9',
+    '#b87f4a',
+    '#000000'
+];
 const TRANSPARENT = 'transparent';
 const DIRECTION = {
     LEFT: 'LEFT',
