@@ -11,7 +11,7 @@
 
     --color: #243441;
     --border-radius: 20px;
-    --setting-btn-color: #f88ab0;
+    --setting-btn-color: #222222;
     --block-size: 25px;
     --button-size: 55px;
     --game-width: 414px;
@@ -20,8 +20,8 @@
 
 .dark {
     --bg-color: #243441;
-    --color: #0affef;
-    --setting-btn-color: #f88ab0;
+    --color: #ffffff;
+    --setting-btn-color: #c7c3c4;
     --wrapper-shadow: -10px 10px 10px #1f2d39,
     10px -10px 10px #293b49;
     --btn-shadow: -5px 5px 10px #1f2d39,
@@ -446,7 +446,7 @@ i.bxs-sun {
     }
 
     .setting-section button {
-        margin-bottom: 120px;
+        margin-bottom: 20px;
 
     }
 
