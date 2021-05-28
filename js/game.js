@@ -179,7 +179,7 @@ hardDrop = (tetromino, grid) => {
 
 // Update grid when tetromino down
 updateGrid = (tetromino, grid) => {
-    row.forEach((row, i) => {
+    tetromino.block.forEach((row, i) => {
         row.forEach((value, j) => {
             let x = tetromino.x + i;
             let y = tetromino.y + j;
@@ -199,6 +199,7 @@ setInterval(() => {
     if(movable(tetromino, grid, DIRECTION.DOWN)) {
         moveDown(tetromino, grid);
     } else {
+        updateGrid(tetromino, grid);
         tetromino = newTetromino(BLOCKS, COLORS, START_X, START_Y);
         drawTetromino(tetromino, grid);
     }
