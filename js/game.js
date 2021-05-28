@@ -219,19 +219,40 @@ checkGrid = (grid) => {
 
 
 // GAME
+let game = {
+    score: START_SCORE,
+    speed: START_SPEED,
+    level: 1,
+    state: GAME_STATE.END,
+    interval: null
+};
+
 let grid = newGrid(GRID_WIDTH, GRID_HEIGHT);
-let tetromino = newTetromino(BLOCKS, COLORS, START_X, START_Y);
-drawTetromino(tetromino, grid);
-setInterval(() => {
-    if(movable(tetromino, grid, DIRECTION.DOWN)) {
-        moveDown(tetromino, grid);
-    } else {
-        updateGrid(tetromino, grid);
-        checkGrid(grid);
-        tetromino = newTetromino(BLOCKS, COLORS, START_X, START_Y);
-        drawTetromino(tetromino, grid);
+let tetromino = null;
+let score_span = document.querySelector('#score');
+let level_span = document.querySelector('#level');
+score_span.innerHTML = game.score;
+
+gameLoop = () => {
+    if (game.state === GAME_STATE.PLAY) {
+        if(movable(tetromino, grid, DIRECTION.DOWN)) {
+            moveDown(tetromino, grid);
+        } else {
+            updateGrid(tetromino, grid);
+            checkGrid(grid);
+            tetromino = newTetromino(BLOCKS, COLORS, START_X, START_Y);
+            drawTetromino(tetromino, grid);
+        }
     }
-}, 1000);
+};
+
+gameStart = () => {
+    game.state = GAME_STATE.PLAY;
+    tetromino = newTetromino(BLOCKS, COLORS, START_X, START_Y);
+    drawTetromino(tetromino, grid);
+    game.interval = setInterval(gameLoop, game.speed);
+};
+
 
 // Add keyboard event
 document.addEventListener('keydown', e => {
@@ -281,6 +302,7 @@ btns.forEach(e => {
                 moveRight(tetromino, grid);
                 break;
             case 'btn-play':
+                gameStart();
                 body.classList.add('play');
                 if (body.classList.contains('pause')){
                     body.classList.remove('pause');
