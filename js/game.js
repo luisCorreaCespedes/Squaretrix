@@ -175,16 +175,34 @@ hardDrop = (tetromino, grid) => {
         tetromino.x++;
     }
     drawTetromino(tetromino, grid);
-}
+};
+
+// Update grid when tetromino down
+updateGrid = (tetromino, grid) => {
+    row.forEach((row, i) => {
+        row.forEach((value, j) => {
+            let x = tetromino.x + i;
+            let y = tetromino.y + j;
+            if (value > 0 && isInGrid(x,y,grid)) {
+                grid.board[x][y].value = value;
+            }
+        })
+    })
+};
 
 
 // DEMO
 let grid = newGrid(GRID_WIDTH, GRID_HEIGHT);
 let tetromino = newTetromino(BLOCKS, COLORS, START_X, START_Y);
 drawTetromino(tetromino, grid);
-//setInterval(() => {
-//    moveDown(tetromino, grid);
-//}, 100);
+setInterval(() => {
+    if(movable(tetromino, grid, DIRECTION.DOWN)) {
+        moveDown(tetromino, grid);
+    } else {
+        tetromino = newTetromino(BLOCKS, COLORS, START_X, START_Y);
+        drawTetromino(tetromino, grid);
+    }
+}, 1000);
 
 // Add keyboard event
 document.addEventListener('keydown', e => {
