@@ -131,11 +131,40 @@ moveLeft = (tetromino, grid) => {
 
 // Move tetromino right
 moveRight = (tetromino, grid) => {
-    if (!movable(tetromino, grid, DIRECTION.RIGHT)){
-        return
-    }
+    if (!movable(tetromino, grid, DIRECTION.RIGHT)) return
     clearTetromino(tetromino, grid);
     tetromino.y++;
+    drawTetromino(tetromino, grid);
+};
+
+//Check rotate
+rotatable = (tetromino, grid) => {
+    let cloneBlock = JSON.parse(JSON.stringify(tetromino.block));
+    for (let y = 0; y < cloneBlock.length; y++) {
+        for (let x = 0; x < y; ++x) {
+            [cloneBlock[x][y], cloneBlock[y][x]] = [cloneBlock[y][x], cloneBlock[x][y]];
+        }
+    }
+    cloneBlock.forEach(row => row.reverse());
+    return cloneBlock.every((row, i) => {
+        return row.every((value, j) => {
+            let x = tetromino.x + i;
+            let y = tetromino.y + j;
+            return value === 0 || (isInGrid(x,y,grid) && !isFilled(x,y,grid));
+        })
+    })
+};
+
+// Rotate tetromino
+rotate = (tetromino, grid) => {
+    if (!rotatable(tetromino, grid)) return 
+    clearTetromino(tetromino, grid);
+    for (let y = 0; y < tetromino.block.length; y++) {
+        for (let x = 0; x < y; ++x) {
+            [tetromino.block[x][y], tetromino.block[y][x]] = [tetromino.block[y][x], tetromino.block[x][y]];
+        }
+    }
+    tetromino.block.forEach(row => row.reverse());
     drawTetromino(tetromino, grid);
 };
 
@@ -162,6 +191,9 @@ document.addEventListener('keydown', e => {
         case KEY.RIGHT:
             moveRight(tetromino, grid);
             break;
+        case KEY.UP:
+            rotate(tetromino, grid);
+            break;
     }
 })
 
@@ -174,6 +206,18 @@ btns.forEach(e => {
     let body = document.querySelector('body');
     e.addEventListener('click', () => {
         switch(btn_id) {
+            case 'btn-up':
+                rotate(tetromino, grid);
+                break;
+            case 'btn-down':
+                moveDown(tetromino, grid);
+                break;
+            case 'btn-left':
+                moveLeft(tetromino, grid);
+                break;
+            case 'btn-right':
+                moveRight(tetromino, grid);
+                break;
             case 'btn-play':
                 body.classList.add('play');
                 if (body.classList.contains('pause')){
