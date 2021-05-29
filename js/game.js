@@ -210,11 +210,16 @@ deleteRow = (row_index, grid) => {
 
 // Check grid for delete row
 checkGrid = (grid) => {
+    let row_count = 0;
     grid.board.forEach((row, i) => {
         if (checkFilledRow(row)) {
             deleteRow(i, grid);
+            row_count++;
         }
     })
+    if (row_count > 0) {
+        updateGame(row_count);
+    }
 };
 
 
@@ -241,7 +246,18 @@ gameLoop = () => {
             updateGrid(tetromino, grid);
             checkGrid(grid);
             tetromino = newTetromino(BLOCKS, COLORS, START_X, START_Y);
-            drawTetromino(tetromino, grid);
+            if (movable(tetromino, grid, DIRECTION.DOWN)) {
+                drawTetromino(tetromino, grid);
+            } else {
+                game.state = GAME_STATE.END;
+                let body = document.querySelector('body');
+                body.classList.add('end');
+                body.classList.remove('play');
+                let rs_level = document.querySelector('#result-level');
+                let rs_score = document.querySelector('#result-score');
+                rs_level.innerHTML = game.level;
+                rs_score.innerHTML = game.score;
+            }
         }
     }
 };
@@ -253,9 +269,41 @@ gameStart = () => {
     game.interval = setInterval(gameLoop, game.speed);
 };
 
+updateGame = (row_count) => {
+    game.score += row_count * MAIN_SCORE + (row_count - 1) * BONUS_SCORE;
+    game.level = Math.floor(game.score / 800) + 1;
+    let new_speed = game.speed < 200 ? 50 : (START_SPEED - game.level * 100);
+    if (new_speed !== game.speed) {
+        game.speed = new_speed;
+        clearInterval(game.interval);
+        game.interval = setInterval(gameLoop, game.speed);
+    }
+    level_span.innerHTML = 'nv. ' + game.level;
+    score_span.innerHTML = game.score;
+}
+
+gamePause = () => {
+    game.state = GAME_STATE.PAUSE;
+};
+
+gameResume = () => {
+    game.state = GAME_STATE.PLAY;
+};
+
+gameReset = () => {
+    clearInterval(game.interval);
+    resetGrid(grid);
+    game.score = START_SCORE;
+    game.speed = START_SPEED;
+    game.state = GAME_STATE.END;
+    game.level = 1;
+    game.interval = null;
+    tetromino = null;
+};
 
 // Add keyboard event
 document.addEventListener('keydown', e => {
+    let body = document.querySelector('body');
     e.preventDefault();
     let key = e.which;
     switch (key) {
@@ -273,6 +321,19 @@ document.addEventListener('keydown', e => {
             break;
         case KEY.SPACE:
             hardDrop(tetromino, grid);
+            break;
+        case KEY.P:
+            let btn_play = document.querySelector('#btn-play');
+            if (game.state !== GAME_STATE.PAUSE) {
+                gamePause();
+                body.classList.add('pause');
+                body.classList.remove('play');
+                btn_play.innerHTML = 'Continuar';
+            } else {
+                body.classList.remove('pause');
+                body.classList.add('play');
+                gameResume();
+            }
             break;
     }
 })
@@ -302,24 +363,30 @@ btns.forEach(e => {
                 moveRight(tetromino, grid);
                 break;
             case 'btn-play':
-                gameStart();
                 body.classList.add('play');
-                if (body.classList.contains('pause')){
+                if (game.state === GAME_STATE.PAUSE){
                     body.classList.remove('pause');
+                    gameResume();
+                    return;
                 }
+                gameStart();
                 break;
             case 'btn-theme':
                 body.classList.toggle('dark');
                 break;
             case 'btn-pause':
+                gamePause();
                 let btn_play = document.querySelector('#btn-play');
                 btn_play.innerHTML = 'Continuar';
                 body.classList.remove('play');
                 body.classList.add('pause');
                 break;   
             case 'btn-new-game':
+                gameReset();
                 body.classList.add('play');
                 body.classList.remove('pause');
+                body.classList.remove('end');
+                gameStart();
                 break; 
         }
     })

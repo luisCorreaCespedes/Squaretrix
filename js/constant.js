@@ -34,16 +34,8 @@ const jBlock = [
     [7,0,0],
     [7,0,0]
 ];
-const uBlock = [
-    [8,8,0],
-    [0,8,0],
-    [8,8,0]
-];
-const pointBlock = [
-    [9]
-];
 
-const BLOCKS = [iBlock, oBlock, tBlock, sBlock, zBlock, lBlock, jBlock, uBlock, pointBlock];
+const BLOCKS = [iBlock, oBlock, tBlock, sBlock, zBlock, lBlock, jBlock];
 const COLORS = [
     '#c23616',
     '#0097e6',
@@ -51,9 +43,7 @@ const COLORS = [
     '#e1b12c',
     '#8c7ae6',
     '#e84393',
-    '#00cec9',
-    '#b87f4a',
-    '#000000'
+    '#00cec9'
 ];
 const TRANSPARENT = 'transparent';
 const DIRECTION = {
@@ -91,5 +81,6 @@ const BONUS_SCORE = 30;
 const GAME_STATE = {
     PLAY: 'PLAY',
     PAUSE: 'PAUSE',
-    END: 'END'
+    END: 'END',
+    HELP: 'HELP'
 }
