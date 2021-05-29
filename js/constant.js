@@ -81,6 +81,5 @@ const BONUS_SCORE = 30;
 const GAME_STATE = {
     PLAY: 'PLAY',
     PAUSE: 'PAUSE',
-    END: 'END',
-    HELP: 'HELP'
+    END: 'END'
 }
