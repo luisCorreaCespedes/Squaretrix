@@ -299,6 +299,8 @@ gameReset = () => {
     game.level = 1;
     game.interval = null;
     tetromino = null;
+    score_span.innerHTML = game.score;
+    level_span.innerHTML = 'nv. ' + game.level;
 };
 
 // Add keyboard event

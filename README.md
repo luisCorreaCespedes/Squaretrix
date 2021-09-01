@@ -1,17 +1,31 @@
 # Squaretrix
 
-Juego de tetris hecho en JavaScript
+_Videojuego del clásico Tetris realizado en JavaScript_
 
-Link: https://squaretrix.netlify.app
+## Link del proyecto 🚀
 
-## Instrucciones para jugar
+_[Squaretrix](https://squaretrix.netlify.app)_
 
-Flecha izquierda: Mover izquierda
+## Instrucciones ⚙️
 
-Flecha derecha: Mover derecha
+Tecla zquierda: Mover izquierda
 
-Flecha arriba: Rotar tetromino
+Tecla derecha: Mover derecha
 
-Flecha abajo: Bajar tetromino más rápido
+Tecla arriba: Rotar tetromino
 
-Tecla espacio: Bajar tetromino instantáneo
+Tecla abajo: Bajar tetromino más rápido
+
+Tecla SPACE: Bajar tetromino instantáneo
+
+## Autor ✒️
+
+**Luis Correa** - *Desarrollo del videojuego* - [GitHub](https://github.com/luisCorreaCespedes)
+
+## Expresiones de Gratitud 🎁
+
+* Si les gusta el proyecto pongan su ⭐️
+* Mini juego hecho para todos los que toman café ☕ al programar. 
+* Gracias a todos mis amigos por apoyarme a crear videojuegos aunque sean simples 🤓.
+
+![Screenshot](./assets/images/example.png)
