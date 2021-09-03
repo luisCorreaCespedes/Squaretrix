@@ -8,7 +8,7 @@ _[Squaretrix](https://squaretrix.netlify.app)_
 
 ## Instrucciones ⚙️
 
-Tecla zquierda: Mover izquierda
+Tecla izquierda: Mover izquierda
 
 Tecla derecha: Mover derecha
 

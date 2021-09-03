@@ -83,3 +83,6 @@ const GAME_STATE = {
     PAUSE: 'PAUSE',
     END: 'END'
 }
+
+// Music theme
+const fxTheme = new Audio('../assets/music/musicTheme.mp3');

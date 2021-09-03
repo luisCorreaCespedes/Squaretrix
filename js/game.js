@@ -250,6 +250,8 @@ gameLoop = () => {
                 drawTetromino(tetromino, grid);
             } else {
                 game.state = GAME_STATE.END;
+                fxTheme.pause();
+                fxTheme.currentTime = 0;
                 let body = document.querySelector('body');
                 body.classList.add('end');
                 body.classList.remove('play');
@@ -267,6 +269,17 @@ gameStart = () => {
     tetromino = newTetromino(BLOCKS, COLORS, START_X, START_Y);
     drawTetromino(tetromino, grid);
     game.interval = setInterval(gameLoop, game.speed);
+
+    if (typeof fxTheme.loop == 'boolean') {
+        fxTheme.loop = true;
+    } else {
+        fxTheme.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+    }
+
+    fxTheme.play();
 };
 
 updateGame = (row_count) => {
@@ -284,15 +297,19 @@ updateGame = (row_count) => {
 
 gamePause = () => {
     game.state = GAME_STATE.PAUSE;
+    fxTheme.pause();
 };
 
 gameResume = () => {
     game.state = GAME_STATE.PLAY;
+    fxTheme.play();
 };
 
 gameReset = () => {
     clearInterval(game.interval);
     resetGrid(grid);
+    fxTheme.pause();
+    fxTheme.currentTime = 0;
     game.score = START_SCORE;
     game.speed = START_SPEED;
     game.state = GAME_STATE.END;
